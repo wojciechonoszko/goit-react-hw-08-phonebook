@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {v4 as uuid} from 'uuid';
 import ContactListItem from '../components/contactListItem/ContactListItem';
 import { ContactListCnt } from '../components/contactListItem/ContactListItemStyles';
+import { connect } from 'react-redux';
+import { deleteContact } from '../../redux/contacts/contacts-actions';
 
 
 const ContactList = ({contacts, deleteContact}) => {
@@ -30,5 +32,21 @@ ContactList.propTypes = {
   )
 };
 
+const getFilteredContacts = (allContacts, filter) => {
 
-export default ContactList;
+  return allContacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase().trim()));
+};
+
+const mapStateToProps = state => {
+
+  return {
+    constacts: getFilteredContacts(state.contacts, state.filter)
+  };
+
+};
+
+const mapDispatchToProps = {deleteContact};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+
