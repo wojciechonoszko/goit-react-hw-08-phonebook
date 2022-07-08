@@ -28,11 +28,11 @@ const middleware = [
     blacklist: ['filter']
   };
   
-  export const store = configureStore({
+  export default const store = configureStore({
     reducer: persistReducer(contactsPersistConfig, contactsReducer),
     middleware,
     devTools: process.env.NODE_ENV === 'development'
   });
-  export const persistor = persistStore(store);
+  export default const persistor = persistStore(store);
   
  // export default {store, persistor};
