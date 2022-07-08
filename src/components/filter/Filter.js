@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {InputContainer, LabelContainer} from '../contactForm/ContactFormStyles';
 
 import { connect } from 'react-redux';
-import { handleChange } from '../redux/filter/filter-actions';
+import { handleChange } from '../../redux/filter/filter-actions';
 
 
 const Filter = ({handleChange, filter}) => {
@@ -14,7 +14,7 @@ const Filter = ({handleChange, filter}) => {
             <InputContainer
                 id="filter"
                 type="text"
-                // onChange={handleChange}
+                
                 onChange={event => {
                     return handleChange(event.target.value);
                 }}

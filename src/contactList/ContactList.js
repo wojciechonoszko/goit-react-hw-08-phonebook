@@ -41,7 +41,7 @@ const getFilteredContacts = (allContacts, filter) => {
 const mapStateToProps = state => {
 
   return {
-    constacts: getFilteredContacts(state.contacts, state.filter)
+    contacts: getFilteredContacts(state.contacts, state.filter)
   };
 
 };
