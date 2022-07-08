@@ -21,20 +21,18 @@ const middleware = [
     }),
     logger
   ];
-
-const contactsPersistConfig = {
+  
+  const contactsPersistConfig = {
     key: 'contacts',
     storage,
     blacklist: ['filter']
-};
-
-const store = configureStore({
+  };
+  
+  const store = configureStore({
     reducer: persistReducer(contactsPersistConfig, contactsReducer),
     middleware,
     devTools: process.env.NODE_ENV === 'development'
-});
-const persistor = persistStore(store);
-
-export default {store, persistor};
-
-
+  });
+  const persistor = persistStore(store);
+  
+  export default {store, persistor};
