@@ -7,6 +7,10 @@ import{
     LabelContainer
 } from './ContactFormStyles';
 
+import { connect } from 'react-redux';
+import { addNewContact } from '../../redux/contacts/contacts-actions';
+
+
 class ContactForm extends Component {
 
     state = {
@@ -64,7 +68,19 @@ ContactForm.propTypes = {
     addNewContact: PropTypes.func.isRequired
 };
 
-export default ContactForm;
+const mapStateToProps = state => {
+    return {
+        contacts: state.contacts
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addNewContact: contact => dispatch(addNewContact(contact))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
 
 
 
