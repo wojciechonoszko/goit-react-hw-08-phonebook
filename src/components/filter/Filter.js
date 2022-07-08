@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {InputContainer, LabelContainer} from '../contactForm/ContactFormStyles';
 
+import { connect } from 'react-redux';
+import { handleChange } from '../redux/filter/filter-actions';
+
 
 const Filter = ({handleChange, filter}) => {
 
@@ -11,7 +14,10 @@ const Filter = ({handleChange, filter}) => {
             <InputContainer
                 id="filter"
                 type="text"
-                onChange={handleChange}
+                // onChange={handleChange}
+                onChange={event => {
+                    return handleChange(event.target.value);
+                }}
                 name="filter"
                 value={filter}
             />
@@ -24,4 +30,14 @@ Filter.propTypes = {
     filter: PropTypes.string.isRequired
 };
 
-export default Filter;
+const mapStateToProps = state => {
+    return {
+        filter: state.filter
+    };
+};
+
+const mapDispatchToProps = {
+    handleChange
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
