@@ -8,3 +8,7 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+export const appReducer = (state, action) => {
+    return state;
+  }
