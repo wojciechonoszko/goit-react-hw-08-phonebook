@@ -1,52 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {v4 as uuid} from 'uuid';
+//import {v4 as uuid} from 'uuid';
 import ContactListItem from '../components/contactListItem/ContactListItem';
 import { ContactListCnt } from '../components/contactListItem/ContactListItemStyles';
-import { connect } from 'react-redux';
-import { deleteContact } from '../redux/contacts/contacts-actions';
 
 
-const ContactList = ({contacts, deleteContact}) => {
+export default function ContactList({ data, deleteButton }) {
   return (
     <ContactListCnt>
-      {contacts.map(contact => (
+      {data.map(({ id, name, number }) => (
         <ContactListItem
-          name={contact.name}
-          number={contact.number}
-          key={uuid()}
-          deleteContact={() => deleteContact(contact.id)}
-        />
+        contactName={name}
+        contactNumber={number}
+        key={id}
+        deleteContact={() => deleteButton(id)}
+      />
       ))}
+        
     </ContactListCnt>
   );
 };
 
 ContactList.propTypes = {
-  deleteContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(
+  data: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired
+      number: PropTypes.string.isRequired,
     })
-  )
+  ),
+  deleteButton: PropTypes.func,
 };
-
-const getFilteredContacts = (allContacts, filter) => {
-
-  return allContacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase().trim()));
-};
-
-const mapStateToProps = state => {
-
-  return {
-    contacts: getFilteredContacts(state.contacts, state.filter)
-  };
-
-};
-
-const mapDispatchToProps = {deleteContact};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
-

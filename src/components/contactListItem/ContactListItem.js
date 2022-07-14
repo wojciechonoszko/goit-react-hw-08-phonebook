@@ -3,24 +3,22 @@ import {ButtonListItem} from '../contactForm/ContactFormStyles';
 import {ContactListItemContainer} from './ContactListItemStyles';
 import PropTypes from 'prop-types';
 
-const ContactListItem = ({name, number, deleteContact}) => {
-    return(
-            <ContactListItemContainer>
+
+export default function ContactListItem({ contactName, contactNumber, deleteContact }) {
+    return (
+        <ContactListItemContainer>
             <p className="contactListItemText">
-                {name}: {number}
+                {contactName}: {contactNumber}
             </p>
             <ButtonListItem type="button" onClick={deleteContact}>
             Delete
             </ButtonListItem>
             </ContactListItemContainer>
-        
-    );
-};
+    )
+}
 
 ContactListItem.propTypes = {
-    deleteContact: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired
+    contactName: PropTypes.string.isRequired,
+    contactNumber: PropTypes.string.isRequired,
+    deleteContact: PropTypes.func.isRequired
 };
-
-export default ContactListItem;
