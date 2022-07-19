@@ -1,6 +1,10 @@
 import React from 'react';
 
 import { useState } from "react";
+
+import { useDispatch } from 'react-redux';
+
+import { addContact } from '../../redux/contacts/contacts-actions'
 //import PropTypes from 'prop-types';
 import{
     ButtonContainer,
@@ -29,19 +33,29 @@ export default function ContactForm({ onSubmit }) {
         }
     };
 
-    const handleSubmit = (e) => {
+    const dispatch = useDispatch();
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     onSubmit({ name, number });
+    //     reset();
+    // };
+
+    const handleAddContact = (e) => {
         e.preventDefault();
-        onSubmit({ name, number });
+        dispatch(addContact({ name, number }));
         reset();
-    };
+    }
 
     const reset = () => {
         setName("");
         setNumber("");
     };
 
+    
+
     return (
-        <ContactFormContainer onSubmit={handleSubmit}>
+        <ContactFormContainer onSubmit={handleAddContact}>
             <LabelContainer htmlFor="name">Name</LabelContainer>
             <InputContainer
             type='text'

@@ -6,6 +6,8 @@ import { ContactListCnt } from '../components/contactListItem/ContactListItemSty
 
 
 export default function ContactList({ data, deleteButton }) {
+
+  
   return (
     <ContactListCnt>
       {data.map(({ id, name, number }) => (
