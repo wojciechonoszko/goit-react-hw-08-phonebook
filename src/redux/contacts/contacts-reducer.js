@@ -1,5 +1,5 @@
-// import { createReducer } from '@reduxjs/toolkit';
-// import { addNewContact, deleteContact } from './contacts-actions';
+import { createReducer } from '@reduxjs/toolkit';
+import { addNewContact, deleteContact } from './contacts-actions';
 
 // const initialState = [
 //     {id: 'id-1', name: 'Andrzej Duda', number: '459-12-56'},
@@ -9,45 +9,37 @@
 //     {id: 'id-5', name: 'Roman Giertych', number: '333-555-777'}
 // ];
 
-// const contacts = createReducer(initialState, {
-//     [addNewContact]: (state, {payload}) => [...state, payload],
-//     [deleteContact]: (state, {payload}) => state.filter(({id}) => id !== payload)
-// });
 
-// export default contacts;
 
-import { ActionTypes } from './constants';
+import { ActionTypes, initialState } from './constants';
+import {v4 as uuid} from 'uuid';
 
-export const contactReducer = (state, action) => {
-    switch(action.type) {
-        case ActionTypes.AddContact: {
-            const { payload: { contactName },
-        } = action;
-        
+const contacts = createReducer(initialState, {
+    [addNewContact]: (state, {payload}) => [...state, payload],
+    [deleteContact]: (state, {payload}) => state.filter(({id}) => id !== payload)
+  });
 
-        if (state.itemsById[contactName.id]){
-            return {
-                ...state,
-                itemsById: {
-                    ...state.itemsById[contactName.id],
+export default contacts;
 
-                }
-            
-            }
-        }
-        return {
-            itemsList: [...state.itemsList, contactName.id],
-            itemsById: {
-                ...state.itemsById,
-                [contactName.id]: {
-                    ...contactName,
+// const contactReducer = (state = initialState, {action, payload}) => {
+//   console.log({action, payload});
+//   switch(action) {
+// case ActionTypes.AddContact:
+//   return {
+//     ...state,
+//     contacts: [...state.contacts, {id: uuid(), ...payload}]
+//   };
 
-                },
-            },
-        };
-        }
+//     case ActionTypes.RemoveContact:
+//       return {
+//         ...state,
+//         contacts: state.contacts.filter(contact => contact.id !== payload)
+//       };
 
-        default:
-            return state;
-    }
-}
+//     default:
+//       console.log(state);
+//       return state;
+//   }
+// };
+
+// export default contactReducer;

@@ -8,17 +8,13 @@ export const deleteContact = createAction('contacts/Delete');
 
 export const getContacts = state => state.contacts.contacts;
 
-export const addContact = (contactName) => ({
+export const addContact = payload => ({
     type: ActionTypes.AddContact,
-    payload: {
-        contactName,
-    }, 
-})
+    payload
+});
 
-export const removeContact = (contactId) => ({
+export const removeContact = payload => ({
     type: ActionTypes.RemoveContact,
-    payload: {
-        contactId,
-    }, 
+    payload
 })
 

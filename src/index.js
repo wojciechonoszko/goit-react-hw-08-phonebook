@@ -1,22 +1,36 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { contactReducer } from './redux/contacts/contacts-reducer'
+import store from './redux/store';
+//import { contactReducer } from './redux/contacts/contacts-reducer'
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
+import {PersistGate} from 'redux-persist/integration/react';
 
 
 
 
-const store = createStore(contactReducer)
+//const store = createStore(contactReducer)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-<React.StrictMode>
-    <App />
+  <React.StrictMode>
+    <Provider store={store.store}>
+      <PersistGate loading={null} persistor={store.persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
-
-  </Provider>
   
 );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Provider store={store.store}>
+//       <PersistGate loading={null} persistor={store.persistor}>
+//         <App />
+//       </PersistGate>
+//     </Provider>
+//   </React.StrictMode>,
+
+//   document.getElementById('root')
+// );

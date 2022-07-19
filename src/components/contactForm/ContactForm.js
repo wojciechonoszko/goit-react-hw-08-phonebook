@@ -43,7 +43,7 @@ export default function ContactForm({ onSubmit }) {
 
     const handleAddContact = (e) => {
         e.preventDefault();
-        dispatch(addContact({ name, number }));
+        dispatch(addContact({ setName, setNumber }));
         reset();
     }
 
