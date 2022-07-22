@@ -9,8 +9,6 @@ import { deleteContact } from "../redux/contacts/contacts-actions";
 import { saveToLocalStorage } from '../components/localStorage/LocalStorage'
 
 const getFilteredContacts = (contacts, filter) => {
-      console.log('getFilteredContacts');
-      console.dir(filter);
     
       return contacts.filter(contacts =>
         contacts.name.toLowerCase().includes(filter.toLowerCase().trim()) ||

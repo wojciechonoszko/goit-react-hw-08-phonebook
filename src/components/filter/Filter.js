@@ -15,12 +15,12 @@ export default function Filter() {
 
   return (
     <>
-      <LabelContainer htmlFor={filter}>Find contacts by name</LabelContainer>
+      <LabelContainer htmlFor={filter}>Find contacts by name or number</LabelContainer>
       <InputContainer
         
         type="text"
         onChange={filterPhonebook}
-        placeholder="Type some name"
+        placeholder="Type some name or number"
       />
     </>
   );
