@@ -1,3 +1,3 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const handleChange = createAction('filter/handleChange');
+export const filterContacts = createAction('filter/Filter');

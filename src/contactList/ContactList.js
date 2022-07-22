@@ -1,8 +1,8 @@
 // import React from 'react';
 // import PropTypes from 'prop-types';
 // //import {v4 as uuid} from 'uuid';
-// import ContactListItem from '../components/contactListItem/ContactListItem';
-// import { ContactListCnt } from '../components/contactListItem/ContactListItemStyles';
+//import ContactListItem from '../components/contactListItem/ContactListItem';
+import { ContactListCnt } from '../components/contactListItem/ContactListItemStyles';
 
 
 // export default function ContactList({ contactReducer, deleteButton }) {
@@ -40,19 +40,33 @@ import {v4 as uuid} from 'uuid';
 import ContactListItem from '../components/contactListItem/ContactListItem';
 import {connect} from 'react-redux';
 import {removeContact} from '../redux/contacts/contacts-actions';
+import {contacts} from '../redux/contacts/contacts-reducer';
 
 const ContactList = ({contacts, removeContact}) => {
-  return (
-    <ul>
-      {contacts.map(contact => (
+  // return (
+  //   <ul>
+  //     {contacts.map(contact => (
+  //       <ContactListItem
+  //         name={contact.name}
+  //         number={contact.number}
+  //         key={uuid()}
+  //         deleteContact={() => removeContact(contact.id)}
+  //       />
+  //     ))}
+  //   </ul>
+  // );
+    return (
+    <ContactListCnt>
+      {contacts.map(({ id, name, number }) => (
         <ContactListItem
-          name={contact.name}
-          number={contact.number}
-          key={uuid()}
-          deleteContact={() => removeContact(contact.id)}
-        />
+        contactName={name}
+        contactNumber={number}
+        key={uuid()}
+        deleteContact={() => removeContact(id)}
+      />
       ))}
-    </ul>
+        
+    </ContactListCnt>
   );
 };
 
@@ -66,11 +80,11 @@ ContactList.propTypes = {
   )
 };
 
-const getFilteredContacts = (allContacts, filter) => {
+const getFilteredContacts = (contacts, filter) => {
   console.log('getFilteredContacts');
   console.dir(filter);
 
-  return allContacts.filter(contact =>
+  return contacts.filter(contact =>
     contact.toLowerCase().includes(filter.toLowerCase().trim())
   );
 };
@@ -84,4 +98,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {removeContact};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+//export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+
+export default ContactList;

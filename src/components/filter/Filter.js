@@ -26,25 +26,29 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 import {InputContainer, LabelContainer} from '../contactForm/ContactFormStyles';
-import {handleChange} from '../../redux/filter/filter-actions';
+import {filterContacts} from '../../redux/filter/filter-actions';
 
-const Filter = ({filter, handleChange}) => {
-  // console.log('Filter-props');
-  // console.dir(filter);
+export default function Filter() {
+  const filter = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
+
+  const filterPhonebook = (e) => {
+    dispatch(filterContacts(e.target.value));
+  };
+
   return (
     <>
       <LabelContainer htmlFor="filter">Find contacts by name</LabelContainer>
       <InputContainer
-        id="filter"
+        value={filter}
         type="text"
-        onChange={event => {
-          // console.log(event.target.value);
-          return handleChange(event.target.value);
-        }}
+        onChange={filterPhonebook}
         name="filter"
+        placeholder="Type some name"
       />
     </>
   );
@@ -55,17 +59,41 @@ Filter.propTypes = {
   filter: PropTypes.string.isRequired
 };
 
-const mapStateToProps = state => {
-  // console.log('Filter-mapStateToProps');
-  // console.dir(state);
-  return {
-    filter: state.filter
-  };
-};
+// const Filter = ({filter, filterContacts}) => {
+//   // console.log('Filter-props');
+//   // console.dir(filter);
+//   return (
+//     <>
+//       <LabelContainer htmlFor="filter">Find contacts by name</LabelContainer>
+//       <InputContainer
+//         id="filter"
+//         type="text"
+//         onChange={event => {
+//           // console.log(event.target.value);
+//           return handleChange(event.target.value);
+//         }}
+//         name="filter"
+//       />
+//     </>
+//   );
+// };
 
-const mapDispatchToProps = {
-  handleChange
-};
+// Filter.propTypes = {
+//   handleChange: PropTypes.func.isRequired,
+//   filter: PropTypes.string.isRequired
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
-// export default Filter;
+// const mapStateToProps = state => {
+//   // console.log('Filter-mapStateToProps');
+//   // console.dir(state);
+//   return {
+//     filter: state.filter
+//   };
+// };
+
+// const mapDispatchToProps = {
+//   handleChange
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+// // export default Filter;
