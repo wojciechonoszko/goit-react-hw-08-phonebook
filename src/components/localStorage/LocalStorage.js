@@ -5,7 +5,7 @@ export const saveToLocalStorage = (key, value) => {
     } catch (error) {
         console.error("Error: ", error.message);
     }
-    }
+    };
 
 
 export const loadFromLocalStorage = (key) => {
@@ -16,10 +16,10 @@ export const loadFromLocalStorage = (key) => {
     } catch (error) {
         console.error("Error: ", error.message);
     }
-}
+};
 
 if (loadFromLocalStorage("CONTACTS") === undefined) {
     saveToLocalStorage("CONTACTS", []);
 }
 
-export const initialContacts = loadFromLocalStorage("CONTACTS")
+export const initialContacts = loadFromLocalStorage("CONTACTS");

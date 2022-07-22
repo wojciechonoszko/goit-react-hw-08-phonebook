@@ -1,8 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { initialState } from "./constants";
+import { initialContacts } from '../../components/localStorage/LocalStorage'
 import { addNewContact, deleteContact} from "./contacts-actions";
 
-const contactsReducer = createReducer(initialState, {
+const contactsReducer = createReducer(initialContacts, {
   [addNewContact]: (state, { payload }) => [...state, payload],
   [deleteContact]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
