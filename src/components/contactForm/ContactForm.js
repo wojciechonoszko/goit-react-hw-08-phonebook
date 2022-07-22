@@ -43,7 +43,7 @@ export default function ContactForm({ onSubmit }) {
 
     return (
         <ContactFormContainer onSubmit={handleInput}>
-            <LabelContainer htmlFor="nameId">Name</LabelContainer>
+            <LabelContainer htmlFor={nameId}>Name</LabelContainer>
             <InputContainer
             type='text'
             id='nameId'
@@ -52,9 +52,9 @@ export default function ContactForm({ onSubmit }) {
             title="Name like Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan etc."
             required
             onChange={handleInput}
-            value={nameId}
+            //value={name}
         />
-            <LabelContainer htmlFor="numberId">Number</LabelContainer>
+            <LabelContainer htmlFor={numberId}>Number</LabelContainer>
             <InputContainer
             type='tel'
             id='numberId'
@@ -63,7 +63,7 @@ export default function ContactForm({ onSubmit }) {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={handleInput}
-            value={numberId}
+            //value={numberId}
         />
         <ButtonContainer type="submit">Add contact</ButtonContainer>
 

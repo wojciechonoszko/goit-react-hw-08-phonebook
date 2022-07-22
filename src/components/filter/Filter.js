@@ -55,7 +55,7 @@ export default function Filter() {
 };
 
 Filter.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  filterPhonebook: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired
 };
 
