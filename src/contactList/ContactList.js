@@ -34,70 +34,75 @@ import { ContactListCnt } from '../components/contactListItem/ContactListItemSty
 //   deleteButton: PropTypes.func,
 // };
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import {v4 as uuid} from 'uuid';
-import ContactListItem from '../components/contactListItem/ContactListItem';
-import {connect} from 'react-redux';
-import {removeContact} from '../redux/contacts/contacts-actions';
-import {contacts} from '../redux/contacts/contacts-reducer';
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import {v4 as uuid} from 'uuid';
+// import ContactListItem from '../components/contactListItem/ContactListItem';
+// import {connect} from 'react-redux';
+// import {removeContact} from '../redux/contacts/contacts-actions';
+// import {contacts} from '../redux/contacts/contacts-reducer';
 
-const ContactList = ({contacts, removeContact}) => {
-  // return (
-  //   <ul>
-  //     {contacts.map(contact => (
-  //       <ContactListItem
-  //         name={contact.name}
-  //         number={contact.number}
-  //         key={uuid()}
-  //         deleteContact={() => removeContact(contact.id)}
-  //       />
-  //     ))}
-  //   </ul>
-  // );
-    return (
-    <ContactListCnt>
-      {contacts.map(({ id, name, number }) => (
-        <ContactListItem
-        contactName={name}
-        contactNumber={number}
-        key={uuid()}
-        deleteContact={() => removeContact(id)}
-      />
-      ))}
+// const ContactList = ({contacts, removeContact}) => {
+//   // return (
+//   //   <ul>
+//   //     {contacts.map(contact => (
+//   //       <ContactListItem
+//   //         name={contact.name}
+//   //         number={contact.number}
+//   //         key={uuid()}
+//   //         deleteContact={() => removeContact(contact.id)}
+//   //       />
+//   //     ))}
+//   //   </ul>
+//   // );
+//     return (
+//     <ContactListCnt>
+//       {contacts.map(({ id, name, number }) => (
+//         <ContactListItem
+//         contactName={name}
+//         contactNumber={number}
+//         key={uuid()}
+//         deleteContact={() => removeContact(id)}
+//       />
+//       ))}
         
-    </ContactListCnt>
-  );
-};
+//     </ContactListCnt>
+//   );
+// };
 
-ContactList.propTypes = {
-  deleteContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired
-    })
-  )
-};
+// ContactList.propTypes = {
+//   deleteContact: PropTypes.func.isRequired,
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired
+//     })
+//   )
+// };
 
-const getFilteredContacts = (contacts, filter) => {
-  console.log('getFilteredContacts');
-  console.dir(filter);
+// const getFilteredContacts = (contacts, filter) => {
+//   console.log('getFilteredContacts');
+//   console.dir(filter);
 
-  return contacts.filter(contact =>
-    contact.toLowerCase().includes(filter.toLowerCase().trim())
-  );
-};
-const mapStateToProps = state => {
-  // console.log('ContactList-mapStateToProps');
-  // console.dir(state.contacts);
-  return {
-    contacts: getFilteredContacts(state.contacts, state.filter)
-  };
-};
+//   return contacts.filter(contact =>
+//     contact.toLowerCase().includes(filter.toLowerCase().trim())
+//   );
+// };
+// const mapStateToProps = state => {
+//   // console.log('ContactList-mapStateToProps');
+//   // console.dir(state.contacts);
+//   return {
+//     contacts: getFilteredContacts(state.contacts, state.filter)
+//   };
+// };
 
-const mapDispatchToProps = {removeContact};
+// const mapDispatchToProps = {removeContact};
 
-//export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+// //export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
 
-export default ContactList;
+// export default ContactList;
+
+import React from "react";
+import { useDispatch, useSelecetor } from "react-redux";
+import { deleteContact } from "../redux/contacts/contacts-actions";
+import { s}
