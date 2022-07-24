@@ -3,10 +3,11 @@ import { ContactListCnt } from '../components/contactListItem/ContactListItemSty
 import PropTypes from 'prop-types';
 import ContactListItem from '../components/contactListItem/ContactListItem';
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../redux/contacts/contacts-actions";
-import { saveToLocalStorage } from '../components/localStorage/LocalStorage'
+import { fetchContacts } from '../redux/contacts/contacts-actions';
+//import { saveToLocalStorage } from '../components/localStorage/LocalStorage'
 
 const getFilteredContacts = (contacts, filter) => {
     
@@ -23,7 +24,14 @@ const ContactList = () => {
     );
 
     const dispatch = useDispatch();
-    saveToLocalStorage("CONTACTS", contacts);
+    // saveToLocalStorage("CONTACTS", contacts);
+    const status = useSelector(state => state.contacts.status);
+
+    useEffect(() => {
+      if (status === 'idle') {
+        dispatch(fetchContacts())
+      }
+    }, [status, dispatch])
 
     return (
             <ContactListCnt>
