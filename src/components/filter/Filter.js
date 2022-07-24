@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from "react-redux";
 
 import {InputContainer, LabelContainer} from '../contactForm/ContactFormStyles';
-import {filterContacts} from '../../redux/filter/filter-actions';
+import {filterContacts} from '../../redux/actions';
 
 export default function Filter() {
   const filter = useSelector((state) => state.filter);
@@ -20,6 +20,7 @@ export default function Filter() {
         
         type="text"
         onChange={filterPhonebook}
+        
         placeholder="Type some name or number"
       />
     </>

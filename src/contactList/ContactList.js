@@ -3,35 +3,47 @@ import { ContactListCnt } from '../components/contactListItem/ContactListItemSty
 import PropTypes from 'prop-types';
 import ContactListItem from '../components/contactListItem/ContactListItem';
 
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteContact } from "../redux/contacts/contacts-actions";
-import { fetchContacts } from '../redux/contacts/contacts-actions';
+import React from "react";
+import { useSelector } from "react-redux";
+//import { deleteContact } from "../redux/contacts/contacts-actions";
+//import { fetchContacts } from '../redux/contacts/contacts-actions';
+
+import {
+  useGetContactsQuery,
+  useRemoveContactMutation,
+} from '../redux/api';
 //import { saveToLocalStorage } from '../components/localStorage/LocalStorage'
 
-const getFilteredContacts = (contacts, filter) => {
+// const getFilteredContacts = (contacts, filter) => {
     
-      return contacts.filter(contacts =>
-        contacts.name.toLowerCase().includes(filter.toLowerCase().trim()) ||
-        contacts.number.includes(filter)
-      );
-    };
+//       return contacts.filter(contacts =>
+//         contacts.name.toLowerCase().includes(filter.toLowerCase().trim()) ||
+//         contacts.number.includes(filter)
+//       );
+//     };
 
 
 const ContactList = () => {
-    const contacts = useSelector(({ contacts, filter}) =>
-    getFilteredContacts(contacts, filter)
-    );
 
-    const dispatch = useDispatch();
+  const { data = [] } = useGetContactsQuery();
+  const [removeContact] = useRemoveContactMutation();
+
+  const filter = useSelector(state => state.filter);
+  const normalizedFilter = filter.toLowerCase();
+  const contacts = data.filter(({ name }) =>
+  name.toLowerCase().includes(normalizedFilter))
+
+    // const contacts = useSelector(({ contacts, filter}) =>
+    // getFilteredContacts(contacts, filter)
+    // );
+
+    //const dispatch = useDispatch();
     // saveToLocalStorage("CONTACTS", contacts);
-    const status = useSelector(state => state.contacts.status);
 
-    useEffect(() => {
-      if (status === 'idle') {
-        dispatch(fetchContacts())
-      }
-    }, [status, dispatch])
+    const handleDeleteContact = async id => {
+      await removeContact(id).unwrap();
+    };
+    
 
     return (
             <ContactListCnt>
@@ -40,7 +52,7 @@ const ContactList = () => {
                 contactName={name}
                 contactNumber={number}
                 key={id}
-                deleteContact={() => dispatch(deleteContact(id))}
+                deleteContact={() => handleDeleteContact(id)}
               />
               ))}
                 
