@@ -1,5 +1,6 @@
-import { phonebookAPI } from './api';
-import { configureStore } from '@reduxjs/toolkit';
+//import { phonebookAPI } from './api';
+import { connectionsApi } from './connectionsApi';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { filter } from './reducers';
 
 export const store = configureStore({
