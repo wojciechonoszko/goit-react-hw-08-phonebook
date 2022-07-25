@@ -13,9 +13,10 @@ const ContactList = () => {
   const [removeContact] = useRemoveContactMutation();
 
   const filter = useSelector(state => state.filter);
-  const normalizedFilter = filter.toLowerCase();
-  const contacts = data.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter)
+
+  const contacts = data.filter(
+    ({ name, phone }) =>
+      name.toLowerCase().includes(filter) || phone.includes(filter)
   );
 
   const handleDeleteContact = async id => {
