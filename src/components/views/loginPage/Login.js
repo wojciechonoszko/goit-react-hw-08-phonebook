@@ -58,5 +58,5 @@ export default function LoginPage() {
                 </form>
             </Container>
         </div>
-    )
+    );
 }
