@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { authOperations } from "redux/auth";
+import { authOperations } from "../../../redux/auth/auth-operations";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
-import Container from "components/container";
+import Container from "../../container/Container";
 import styles from './Login.module.css';
 
 

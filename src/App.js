@@ -2,11 +2,11 @@ import React from 'react';
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import './App.module.css';
+//import './App.module.css';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-import { authOperations } from 'redux/auth';
-import AppBar from 'components/AppBar';
+import { authOperations } from './redux/auth/auth-operations';
+import AppBar from 'components/appBar/AppBar';
 
 // import ContactForm from './components/contactForm/ContactForm';
 // import Filter from './components/filter/Filter';
@@ -16,11 +16,11 @@ import AppBar from 'components/AppBar';
 //   ContactsContainer,
 // } from './components/contactForm/ContactFormStyles';
 
-const HomePage = lazy(() => import('./components/Views/HomePage'));
-const LoginPage = lazy(() => import('./components/Views/LoginPage'));
-const RegisterPage = lazy(() => import('./components/Views/RegisterPage'));
-const ContactsPage = lazy(() => import('./components/Views/ContactsPage'));
-const NotFoundPage = lazy(() => import('components/NotFoundPage/NotFoundPage'));
+const HomePage = lazy(() => import('./components/views/homePage/HomePage'));
+const LoginPage = lazy(() => import('./components/views/loginPage/Login'));
+const RegisterPage = lazy(() => import('./components/views/registerPage/RegisterPage'));
+const ContactsPage = lazy(() => import('./components/views/contactsPage/ContactsPage'));
+const NotFoundPage = lazy(() => import('components/notFoundPage/NotFoundPage'));
 
 export default function App() {
 

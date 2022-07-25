@@ -2,7 +2,8 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from "react-redux";
-import { authOperations, authSelectors } from "../../redux/auth";
+import { authOperations } from "../../redux/auth/auth-operations";
+import { authSelectors } from "../../redux/auth/auth-selectors";
 import defaultAvatar from './defaultAvatar.png';
 import styles from './UserMenu.module.css';
 

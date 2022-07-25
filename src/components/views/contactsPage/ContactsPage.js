@@ -1,9 +1,9 @@
 import React from 'react';
-import { useFetchContactsQuery } from '../../../redux/contactSlice';
-import ContactForm from '../../contactForm/';
-import Filter from '../../filter';
-import ContactList from '../../contactList';
-import Container from '../../container';
+import { useGetContactsQuery } from '../../../redux/connectionsApi';
+import ContactForm from '../../contactForm/ContactForm';
+import Filter from '../../filter/Filter';
+import ContactList from '../../../contactList/ContactList';
+import Container from '../../container/Container';
 
 export default function ContactsPage() {
   const { data } = useFetchContactsQuery();

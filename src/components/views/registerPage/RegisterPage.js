@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { authOperations } from "redux/auth";
-import Container from "components/Container";
+import { authOperations } from "../../../redux/auth/auth-operations";
+import Container from "../../container/Container";
 import styles from './RegisterPage.module.css';
 
 export default function RegisterPage() {

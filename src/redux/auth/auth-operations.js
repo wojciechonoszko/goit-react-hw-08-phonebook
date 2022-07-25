@@ -66,11 +66,11 @@ Notiflix.Notify.init({
       } catch (error) { console.log(error.message)}
   });
 
-  const authOperations = {
+export const authOperations = {
     register,
     logIn,
     logOut,
     fetchCurrentUser,
 };
 
-export default authOperations;
+//export default authOperations;
