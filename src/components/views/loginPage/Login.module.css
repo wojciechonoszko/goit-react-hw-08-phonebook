@@ -1,0 +1,30 @@
+.form {
+    margin-bottom: 20px;
+    border-radius: 6px;
+    padding: 20px;
+    border: 1px solid rgba(118, 89, 89, 0.7);
+    box-shadow: 0 5px 5px rgb(85, 61, 61);
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: 600;
+}
+
+.input {
+    
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid rgba(100, 48, 48, 0.7);
+    border-radius: 6px;
+    box-shadow: 0 10px 10px rgb(96, 52, 52);
+}
+
+.input:focus {
+    outline: none;
+}
