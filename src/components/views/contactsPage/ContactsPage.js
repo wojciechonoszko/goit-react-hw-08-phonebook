@@ -6,7 +6,7 @@ import ContactList from '../../../contactList/ContactList';
 import Container from '../../container/Container';
 
 export default function ContactsPage() {
-  const { data } = useFetchContactsQuery();
+  const { data } = useGetContactsQuery();
   console.log(data);
   const contactsData = data;
 

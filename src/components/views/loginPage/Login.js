@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { authOperations } from "../../../redux/auth/auth-operations";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert';
+//import Alert from '@mui/material/Alert';
 import Container from "../../container/Container";
 import styles from './Login.module.css';
 
@@ -40,7 +40,7 @@ export default function LoginPage() {
         <div>
             <Container>
                 <h1>Please Login</h1>
-                <form onSubmit={handleSubmit} className={s.form}>
+                <form onSubmit={handleSubmit} className={styles.form}>
                 <label className={styles.label}>
                     Email
                 <input className={styles.input} type="email" name="email" value={email} onChange={handleChange} />

@@ -73,4 +73,4 @@ export const authOperations = {
     fetchCurrentUser,
 };
 
-//export default authOperations;
+export default authOperations;

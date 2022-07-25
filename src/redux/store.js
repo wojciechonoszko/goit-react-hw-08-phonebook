@@ -13,9 +13,12 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
-import { authReducer } from './auth';
-import contactsReducer from '../redux/contacts/contacts-reducer';
-import { filter } from './reducers';
+import {authReducer} from './auth';
+import reducer from './reducers';
+
+
+//import contactsReducer from '../redux/contacts/contacts-reducer';
+//import { filter } from './reducers';
 
 const authPersistConfig = {
   key: 'auth',
@@ -26,7 +29,7 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer,
+    contacts: reducer,
     [connectionsApi.reducerPath]: connectionsApi.reducer,
   },
   middleware: getDefaultMiddleware =>
