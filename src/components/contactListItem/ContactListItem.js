@@ -18,8 +18,8 @@ export default function ContactListItem({ contactName, contactNumber, deleteCont
 }
 
 ContactListItem.propTypes = {
-    contactName: PropTypes.string.isRequired,
-    contactNumber: PropTypes.string.isRequired,
-    deleteContact: PropTypes.func.isRequired
+    contactName: PropTypes.string,
+    contactNumber: PropTypes.string,
+    deleteContact: PropTypes.func
 };
 

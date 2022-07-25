@@ -47,14 +47,25 @@ const ContactList = () => {
 
     return (
             <ContactListCnt>
-              {contacts.map(({ id, name, number }) => (
-                <ContactListItem
-                contactName={name}
-                contactNumber={number}
-                key={id}
-                deleteContact={() => handleDeleteContact(id)}
-              />
-              ))}
+              {contacts.map(contact => {
+                return (
+                  <ContactListItem
+                  key={contact.id}
+                  contactName={contact.name}
+                  contactNumber ={contact.number}
+                  deleteContact={() => handleDeleteContact(contact.id)}
+                  />
+                )
+              })}
+              
+              {/* // {contacts.map(({ id, name, number }) => ( */}
+              {/* //   <ContactListItem
+              //   contactName={name}
+              //   contactNumber={number}
+              //   key={id}
+              //   deleteContact={() => handleDeleteContact(id)}
+              // />
+              // ))} */}
                 
             </ContactListCnt>
           );
