@@ -1,0 +1,26 @@
+.button {
+    display: block;
+    /* margin: 0 auto; */
+    padding: 10px 20px;
+    border-radius: 5px;
+    /* border: 1px solid rgba(130, 130, 130, 0.7); */
+    font-size: 18px;
+    line-height: 1.3em;
+    cursor: pointer;
+}
+
+.userMenu {
+    display: flex;
+    margin-right: 20px;
+}
+
+.userName {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 6px;
+    font-weight: 700;
+    font-size: 18px;
+    color: rgb(51, 33, 33);
+    text-align: center;
+    line-height:20px;
+}
