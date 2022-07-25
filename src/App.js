@@ -8,14 +8,6 @@ import PublicRoute from './components/PublicRoute';
 import { authOperations } from './redux/auth/auth-operations';
 import AppBar from 'components/appBar/AppBar';
 
-// import ContactForm from './components/contactForm/ContactForm';
-// import Filter from './components/filter/Filter';
-// import ContactList from './contactList/ContactList';
-// import {
-//   PhonebookContainer,
-//   ContactsContainer,
-// } from './components/contactForm/ContactFormStyles';
-
 const HomePage = lazy(() => import('./components/views/homePage/HomePage'));
 const LoginPage = lazy(() => import('./components/views/loginPage/Login'));
 const RegisterPage = lazy(() => import('./components/views/registerPage/RegisterPage'));
@@ -44,16 +36,5 @@ export default function App() {
     </Routes>
     </Suspense>
     </>
-    // <div>
-    //   <PhonebookContainer>
-    //     <h1>Phonebook</h1>
-    //     <ContactForm />
-    //   </PhonebookContainer>
-    //   <ContactsContainer>
-    //     <h2>Contacts</h2>
-    //     <Filter />
-    //     <ContactList />
-    //   </ContactsContainer>
-    // </div>
   );
 }

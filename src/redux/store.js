@@ -17,8 +17,6 @@ import {authReducer} from './auth';
 import reducer from './reducers';
 
 
-//import contactsReducer from '../redux/contacts/contacts-reducer';
-//import { filter } from './reducers';
 
 const authPersistConfig = {
   key: 'auth',
