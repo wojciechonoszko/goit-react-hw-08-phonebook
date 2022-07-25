@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useState } from 'react';
 
-import { useAddContactMutation } from '../../redux/api';
+import { useAddContactMutation } from '../../redux/connectionsApi';
 import {
   ButtonContainer,
   ContactFormContainer,

@@ -17,34 +17,6 @@ import { authReducer } from './auth';
 import contactsReducer from '../redux/contacts/contacts-reducer';
 import { filter } from './reducers';
 
-// export const store = configureStore({
-//   reducer: {
-//     [phonebookAPI.reducerPath]: phonebookAPI.reducer,
-//     filter,
-//   },
-//   middleware: getDefaultMiddleware =>
-//     getDefaultMiddleware().concat(phonebookAPI.middleware),
-// });
-
-//const middleware = 
-//  [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }).concat(connectionsApi.middleware),
-//   logger,
-// ];
-
-// getDefaultMiddleware => {
-//     return getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }).concat(connectionsApi.middleware);
-//   }
- 
-
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -57,12 +29,12 @@ const store = configureStore({
     contacts: contactsReducer,
     [connectionsApi.reducerPath]: connectionsApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-serializableCheck: {
-  ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-},
-}).concat(connectionsApi.middleware),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(connectionsApi.middleware),
   logger,
   devTools: process.env.NODE_ENV === 'development',
 });

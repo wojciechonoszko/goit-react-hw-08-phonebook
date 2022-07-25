@@ -28,7 +28,7 @@ export const connectionsApi = createApi({
         }),
         invalidatesTags: ['Contact'],
     }),
-    deleteContact: builder.mutation({
+    removeContact: builder.mutation({
         query: id => ({
             url: `/contacts/${id}`,
             method: 'DELETE',
@@ -40,6 +40,6 @@ export const connectionsApi = createApi({
 
 export const{
     useGetContactsQuery,
-    useDeleteContactsMutation,
+    useRemoveContactsMutation,
     useAddContactMutation,
 } = connectionsApi

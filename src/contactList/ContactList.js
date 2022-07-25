@@ -6,7 +6,7 @@ import ContactListItem from '../components/contactListItem/ContactListItem';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { useGetContactsQuery, useRemoveContactMutation } from '../redux/api';
+import { useGetContactsQuery, useRemoveContactMutation } from '../redux/connectionsApi';
 
 const ContactList = () => {
   const { data = [] } = useGetContactsQuery();
